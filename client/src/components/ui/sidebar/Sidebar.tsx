@@ -1,4 +1,4 @@
-import { Link, useLocation, type Location } from "react-router";
+import { Link, useLocation, type Location } from "react-router-dom";
 import { useAuth } from "../../../hooks/useAuth";
 import Loader from "../../shared/Loader";
 import { BellIcon, HomeIcon, ShipWheelIcon, UserIcon } from "lucide-react";

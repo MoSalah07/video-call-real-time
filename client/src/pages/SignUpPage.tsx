@@ -1,6 +1,6 @@
 import { ShipWheelIcon } from "lucide-react";
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import type { AxiosError } from "axios";
 import { vaildationRegister } from "../validations/register.validation";
 import ErrorsComponent from "../components/shared/ErrorsComponent";

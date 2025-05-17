@@ -6,7 +6,7 @@ import {
   useCallStateHooks,
 } from "@stream-io/video-react-sdk";
 
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 export default function CallContent() {
   const { useCallCallingState } = useCallStateHooks();

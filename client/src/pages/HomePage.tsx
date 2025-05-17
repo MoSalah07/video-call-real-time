@@ -6,7 +6,7 @@ import {
   getUsersFriends,
   sendFriendRequest,
 } from "../lib/api";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import {
   CheckCircleIcon,
   MapPinIcon,

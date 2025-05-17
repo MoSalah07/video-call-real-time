@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import type { ISignDataInput } from "../interface";
 import { axiosInstance } from "../lib/axios";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 export default function useSignup() {
   const queryClient = useQueryClient();

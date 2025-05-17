@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import type { IFriends } from "../../interface";
 import { getLanguageFlag } from "../../utils/getLanguageFlag";
 

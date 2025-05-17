@@ -3,7 +3,7 @@ import { ShipWheelIcon } from "lucide-react";
 import type { AxiosError } from "axios";
 import ErrorsComponent from "../components/shared/ErrorsComponent";
 import { vaildationLogin } from "../validations/login.validation";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import useLogin from "../hooks/useLogin";
 
 interface LoginInput {
