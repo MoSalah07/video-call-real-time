@@ -12,7 +12,8 @@ import cookieParser from "cookie-parser";
 // Cors
 import cors from "cors";
 
-import path from "node:path";
+import path from "path";
+import fs from "fs";
 
 const PORT = process.env.PORT || 5000;
 const app = express();
@@ -31,13 +32,25 @@ app.use(`/api/auth`, authRoutes);
 app.use(`/api/user`, usersRoutes);
 app.use(`/api/chat`, chatRoutes);
 
+// ======== Serve Vite React build in production ========
 if (process.env.NODE_ENV === "production") {
-  const __dirname = path.resolve();
+  const clientPath = path.join(__dirname, "../../client/dist");
+  const indexPath = path.join(clientPath, "index.html");
 
-  app.use(express.static(path.join(__dirname, "../../client/dist")));
+  // Serve static files
+  app.use(express.static(clientPath));
 
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../../client", "dist", "index.html"));
+  // Fallback to index.html for SPA
+  app.use((req, res, next) => {
+    if (req.method === "GET" && !req.path.startsWith("/api")) {
+      if (fs.existsSync(indexPath)) {
+        res.sendFile(indexPath);
+      } else {
+        res.status(404).send("index.html not found");
+      }
+    } else {
+      next();
+    }
   });
 }
 
