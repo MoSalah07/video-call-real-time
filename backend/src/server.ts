@@ -33,26 +33,26 @@ app.use(`/api/user`, usersRoutes);
 app.use(`/api/chat`, chatRoutes);
 
 // ======== Serve Vite React build in production ========
-if (process.env.NODE_ENV === "production") {
-  const clientPath = path.join(__dirname, "../../client/dist");
-  const indexPath = path.join(clientPath, "index.html");
+// if (process.env.NODE_ENV === "production") {
+//   const clientPath = path.join(__dirname, "../../client/dist");
+//   const indexPath = path.join(clientPath, "index.html");
 
-  // Serve static files
-  app.use(express.static(clientPath));
+//   // Serve static files
+//   app.use(express.static(clientPath));
 
-  // Fallback to index.html for SPA
-  app.use((req, res, next) => {
-    if (req.method === "GET" && !req.path.startsWith("/api")) {
-      if (fs.existsSync(indexPath)) {
-        res.sendFile(indexPath);
-      } else {
-        res.status(404).send("index.html not found");
-      }
-    } else {
-      next();
-    }
-  });
-}
+//   // Fallback to index.html for SPA
+//   app.use((req, res, next) => {
+//     if (req.method === "GET" && !req.path.startsWith("/api")) {
+//       if (fs.existsSync(indexPath)) {
+//         res.sendFile(indexPath);
+//       } else {
+//         res.status(404).send("index.html not found");
+//       }
+//     } else {
+//       next();
+//     }
+//   });
+// }
 
 app.listen(PORT, () => {
   console.log(`server connected on port ${PORT}`);
